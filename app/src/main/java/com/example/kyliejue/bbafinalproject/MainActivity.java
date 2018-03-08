@@ -33,6 +33,8 @@ public class MainActivity extends Activity implements SensorEventListener {
         float illuminance = event.values[0];
         if (illuminance > 10.0) {
             setContentView(R.layout.activity_sensor);
+        } else {
+            setContentView(R.layout.activity_main);
         }
         // Do something with this sensor data.
     }
