@@ -5,11 +5,11 @@ import android.util.Log;
 public class Condition {
     SensorInput sensor;
     private String operand;
-    private String chosen_val;
+    private String chosenValue;
 
     public Condition() {
         operand = "";
-        chosen_val = "";
+        chosenValue = "";
     }
 
     // The following methods will be called from the InTile page
@@ -22,23 +22,25 @@ public class Condition {
     }
 
     public void updateChosenVal(String chosen) {
-        chosen_val = chosen;
+        chosenValue = chosen;
     }
 
     public boolean evaluate() {
+        double sensorVal = Double.parseDouble(sensor.getCurrOutput());
+        double chosenVal = Double.parseDouble(chosenValue);
         switch (operand) {
             case "<":
-                if (sensor.getCurrOutput() < chosen_val) return true;
+                if (sensorVal < chosenVal) return true;
                 return false;
             case ">":
-                if (sensor.getCurrOutput() > chosen_val) return true;
+                if (sensorVal > chosenVal) return true;
                 return false;
             case "=":
-                if (sensor.getCurrOutput() == chosen_val) return true;
+                if (sensorVal == chosenVal) return true;
                 return false;
             default:
                 Log.d("STATE", "Invalid operand");
-                break;
+                return false;
         }
     }
 }
