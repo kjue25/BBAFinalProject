@@ -6,7 +6,9 @@ public class Domino {
     private boolean isOn;
 
     public Domino() {
-
+        inputs = new Condition[0];
+        output = null;
+        isOn = false;
     }
 
     public void turnOnSensors() {

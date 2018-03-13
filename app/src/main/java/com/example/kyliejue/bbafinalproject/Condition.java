@@ -8,13 +8,14 @@ public class Condition {
     private String chosenValue;
 
     public Condition() {
+        sensor = null;
         operand = "";
         chosenValue = "";
     }
 
     // The following methods will be called from the InTile page
     public void updateSensor() {
-
+        //TODO
     }
 
     public void updateOperand(String op) {
