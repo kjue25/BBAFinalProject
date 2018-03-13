@@ -48,16 +48,13 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
 
         ConstraintLayout brightContent = findViewById(R.id.bright_sensor_msg);
         ConstraintLayout darkContent = findViewById(R.id.dark_sensor_msg);
-       // if (brightContent != null && darkContent != null) {
-
-            if (brightness > 10.0) {
-                brightContent.setVisibility(View.VISIBLE);
-                darkContent.setVisibility(View.GONE);
-            } else {
-                brightContent.setVisibility(View.GONE);
-                darkContent.setVisibility(View.VISIBLE);
-            }
-       // }
+        if (brightness > 10.0) {
+            brightContent.setVisibility(View.VISIBLE);
+            darkContent.setVisibility(View.GONE);
+        } else {
+            brightContent.setVisibility(View.GONE);
+            darkContent.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
