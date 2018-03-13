@@ -6,13 +6,19 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
+
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 public class SensorActivity extends AppCompatActivity implements SensorEventListener {
     private SensorManager mSensorManager;
@@ -21,7 +27,8 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
     @Override
     public final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sensor);
+
 
         // Get an instance of the sensor service, and use that to get an instance of
         // a particular sensor.
@@ -36,13 +43,21 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
 
     @Override
     public final void onSensorChanged(SensorEvent event) {
-        float illuminance = event.values[0];
-        if (illuminance > 10.0) {
-            setContentView(R.layout.activity_sensor);
-        } else {
-            setContentView(R.layout.activity_main);
-        }
-        // Do something with this sensor data.
+        Log.d("STATE", "SENSOR CHANGED");
+        float brightness = event.values[0];
+
+        ConstraintLayout brightContent = findViewById(R.id.bright_sensor_msg);
+        ConstraintLayout darkContent = findViewById(R.id.dark_sensor_msg);
+       // if (brightContent != null && darkContent != null) {
+
+            if (brightness > 10.0) {
+                brightContent.setVisibility(View.VISIBLE);
+                darkContent.setVisibility(View.GONE);
+            } else {
+                brightContent.setVisibility(View.GONE);
+                darkContent.setVisibility(View.VISIBLE);
+            }
+       // }
     }
 
     @Override

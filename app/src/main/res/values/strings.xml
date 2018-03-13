@@ -2,4 +2,6 @@
     <string name="app_name">BBAFinalProject</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_edit">EditActivity</string>
+    <string name="title_in_tile">InTile</string>
+    <string name="title_out_tile">OutTile</string>
 </resources>

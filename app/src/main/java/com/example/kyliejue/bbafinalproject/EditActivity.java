@@ -1,5 +1,6 @@
 package com.example.kyliejue.bbafinalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,35 +17,17 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton inTile = (FloatingActionButton) findViewById(R.id.in_tile);
-        inTile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setContentView(R.layout.activity_sensor); //FIXME
-                Log.d("STATE", "BUTTON PUSHED");
-            }
-        });
-
-        FloatingActionButton outTile = (FloatingActionButton) findViewById(R.id.out_tile);
-        outTile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                Log.d("STATE","OUT BUTTON PUSHED");
-            }
-        });
     }
 
+    public void openInTilePage(View view) {
+        Intent intent = new Intent(this, SensorActivity.class);
+        startActivity(intent);
+        setContentView(R.layout.activity_sensor);
+    }
 
-//    public void openOutTilePage() {
-//      setContentView(R.layout.activity_sensor); //FIXME
-//    }
-//
-//    public void openInTilePage() {
-//        //TODO
-//    }
-
+    //Should navigate to the OutTile creation page
+    public void openOutTilePage(View view) {
+        // Need to add intent and call to setContentView here
+    }
 
 }
