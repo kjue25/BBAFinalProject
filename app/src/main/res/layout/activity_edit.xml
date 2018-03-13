@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".EditActivity">
 
-
-    <include layout="@layout/content_edit" />
-
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/in_tile"
         android:layout_width="wrap_content"
