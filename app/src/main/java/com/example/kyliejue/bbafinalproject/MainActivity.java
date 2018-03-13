@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+//BACK BUTTON CURRENTLY BROKEN EVERYWHERE...
 public class MainActivity extends AppCompatActivity {
 
     @Override
