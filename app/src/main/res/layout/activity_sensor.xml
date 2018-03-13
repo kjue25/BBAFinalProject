@@ -21,7 +21,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_sensor"/>
+    <include android:id="@+id/bright_sensor_msg"
+        layout="@layout/content_bright_sensor"
+        android:visibility="gone" />
+
+    <include android:id="@+id/dark_sensor_msg"
+        layout="@layout/content_dark_sensor"
+        android:visibility="gone" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
