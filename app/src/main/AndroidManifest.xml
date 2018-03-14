@@ -29,7 +29,8 @@
             android:label="@string/title_activity_edit"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".OutTileActivity" />
-        <activity android:name=".OutputFlashlightActivity"></activity>
+        <activity android:name=".OutputFlashlightActivity" />
+        <activity android:name=".OutputCameraActivity"></activity>
     </application>
 
 </manifest>
