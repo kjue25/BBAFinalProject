@@ -22,4 +22,12 @@ public class Domino {
             condition.sensor.turnOff();
         }
     }
+
+    public void setOuput(Output newOutput) {
+        output = newOutput;
+    }
+
+    public Output getOutput() {
+        return output;
+    }
 }
