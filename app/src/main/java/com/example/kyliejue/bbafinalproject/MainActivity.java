@@ -17,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void openEditPage(View view) {
         Intent intent = new Intent(this, EditActivity.class);
+        // TODO: Get domino name to pass into intent
+        intent.putExtra("domino_name", "testDominoName");
         startActivity(intent);
         setContentView(R.layout.activity_edit);
     }
-
 }
