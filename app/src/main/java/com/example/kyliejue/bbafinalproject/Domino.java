@@ -49,7 +49,17 @@ public class Domino implements Serializable {
         isOn = !isOn;
     }
 
-    public void setOuput(Output newOutput) {
+    public void setInput(int index, Condition condition) {
+        // TODO: Add the ability to update multiple conditions in input
+        // TODO: Maybe just change condition param to ArrayList<Condition>; check Serializability
+        inputs.set(index, condition);
+    }
+
+    public ArrayList<Condition> getInput() {
+        return inputs;
+    }
+
+    public void setOutput(Output newOutput) {
         output = newOutput;
     }
 

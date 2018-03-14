@@ -14,7 +14,13 @@ import android.view.View;
 public class EditActivity extends AppCompatActivity {
 
     private Domino editDomino;
-    private DominoReceiver dominoReceiver;
+
+    // Request codes for OutTile and InTile activities
+    // TODO: Move these to a res.values file
+    private static final int RECEIVED_INTILE_CODE = 0;
+    private static final int RECEIVED_OUTTILE_CODE = 1;
+    private static final int EDIT_INTILE_CODE = 2;
+    private static final int EDIT_OUTTILE_CODE = 3;
 
     private class DominoReceiver extends BroadcastReceiver {
         @Override
@@ -57,14 +63,33 @@ public class EditActivity extends AppCompatActivity {
     }
 
     public void openInTilePage(View view) {
-        Intent intent = new Intent(this, SensorActivity.class);
-        startActivity(intent);
-        setContentView(R.layout.activity_sensor);
+        Intent intent = new Intent(this, InTileActivity.class);
+        //TODO: Fix the following line to handle ArrayList<Condition>
+        intent.putExtra("domino_input", editDomino.getInput().get(0));
+        startActivityForResult(intent, EDIT_INTILE_CODE);
+        setContentView(R.layout.activity_in_tile);
     }
 
-    //Should navigate to the OutTile creation page
+    //Navigates to the OutTile creation page
     public void openOutTilePage(View view) {
-        //TODO: Add intent and call to setContentView here
+        // TODO: Replace SensorActivity.class with OutTileActivity.class
+        Intent intent = new Intent(this, SensorActivity.class);
+        intent.putExtra("domino_output", editDomino.getOutput());
+        startActivityForResult(intent, EDIT_OUTTILE_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RECEIVED_INTILE_CODE) {
+            // TODO: Get index from data as well
+            Condition condition = (Condition) data.getSerializableExtra("update_input");
+            editDomino.setInput(0, condition);
+        } else if (requestCode == RECEIVED_OUTTILE_CODE) {
+            // Get output object from data.getExtras();
+            Output output = (Output) data.getSerializableExtra("update_output");
+            editDomino.setOutput(output);
+        }
     }
 
 }

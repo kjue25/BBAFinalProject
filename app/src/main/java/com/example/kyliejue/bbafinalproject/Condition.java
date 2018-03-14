@@ -2,7 +2,9 @@ package com.example.kyliejue.bbafinalproject;
 
 import android.util.Log;
 
-public class Condition {
+import java.io.Serializable;
+
+public class Condition implements Serializable {
     SensorInput sensor;
     private String operand;
     private String chosenValue;

@@ -28,7 +28,9 @@
         <service
             android:name=".DominoService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name=".InTileActivity"></activity>
     </application>
 
 </manifest>
