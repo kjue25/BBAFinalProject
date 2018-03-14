@@ -8,6 +8,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 public class EditActivity extends AppCompatActivity {
@@ -18,9 +19,11 @@ public class EditActivity extends AppCompatActivity {
     private class DominoReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.d("STATE", "onReceive");
             String action = intent.getAction();
-            if (action.equals("returnDomino")) {
+            if (action.equals("getDomino")) {
                 editDomino = (Domino) intent.getSerializableExtra("return_domino");
+                Log.d("STATE", "RECEIVED DOMINO with isOn: " + Boolean.toString(editDomino.isOn())); //SHOULD BE FALSE
             }
         }
     }
@@ -40,13 +43,13 @@ public class EditActivity extends AppCompatActivity {
 
         IntentFilter filter = new IntentFilter();
         filter.addAction("getDomino");
-        dominoReceiver = new DominoReceiver();
-        registerReceiver(dominoReceiver, filter);
+        registerReceiver(new DominoReceiver(), filter);
+
+        Log.d("STATE", "Finished registering domino receiver");
     }
 
     @Override
     protected void onStop() {
-        unregisterReceiver(dominoReceiver);
         super.onStop();
     }
 

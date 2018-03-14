@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -17,7 +18,8 @@ public class DominoService extends IntentService {
     public DominoService() {
         super("DominoService");
         dominoes = new HashMap<String, Domino>(); // Should this go in the constructor?
-        dominoes.put("testDominoName", new Domino());
+        Domino testDom = new Domino();
+        dominoes.put("testDominoName", testDom);
     }
 
     @Override
@@ -51,11 +53,14 @@ public class DominoService extends IntentService {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //TODO: Check if this code should be moved to a different method
+        Log.d("STATE", "Domino service called");
+
         String action = intent.getAction();
         String name = intent.getStringExtra("name");
         if (action.equals("getDomino")) {
+            Log.d("STATE", "getDomino action");
             Intent returnDomino = new Intent();
-            returnDomino.setAction("returnDomino");
+            returnDomino.setAction("getDomino");
             returnDomino.putExtra("return_domino", dominoes.get(name));
             sendBroadcast(returnDomino);
         }
