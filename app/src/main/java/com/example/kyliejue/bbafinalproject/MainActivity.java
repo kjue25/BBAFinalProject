@@ -13,9 +13,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        Intent intent = new Intent(this, DominoService.class);
-//        startService(intent);
     }
 
     public void openEditPage(View view) {
@@ -25,7 +22,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         setContentView(R.layout.activity_edit);
     }
-
-    //stopService() ???
-
 }

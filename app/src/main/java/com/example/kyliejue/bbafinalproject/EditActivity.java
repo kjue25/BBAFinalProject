@@ -36,6 +36,7 @@ public class EditActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // TODO: Determine if starting service needs to happen in the main activity
         Intent intent = new Intent(this, DominoService.class);
         intent.setAction("getDomino");
         intent.putExtra("name", parentIntent.getStringExtra("domino_name"));
@@ -44,12 +45,14 @@ public class EditActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction("getDomino");
         registerReceiver(new DominoReceiver(), filter);
+        // Without unregisterReceiver, back button from this page causes crash
 
         Log.d("STATE", "Finished registering domino receiver");
     }
 
     @Override
     protected void onStop() {
+        // TODO: unregister BroadcastReceivers here?
         super.onStop();
     }
 
