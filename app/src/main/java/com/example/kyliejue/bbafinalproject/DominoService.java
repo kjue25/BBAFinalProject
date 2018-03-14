@@ -16,7 +16,13 @@ public class DominoService extends Service {
     // Domino objects to prevent needing to loop through all dominoes in the arraylist
 
     public DominoService() {
-        dominoes = new HashMap<String, Domino>();
+
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        dominoes = new HashMap<String, Domino>(); // Should this go in the constructor?
     }
 
     @Override
@@ -44,18 +50,15 @@ public class DominoService extends Service {
                 // TODO Auto-generated method stub
                 while(true)
                 {
-//                    Thread.sleep(60000)
-                        //ADD CODE
+                    for (Domino domino : dominoes.values()) {
+                        if (domino.isOn() && domino.conditionsSatisfied()) {
+                            domino.triggerOutput();
+                        }
+                    }
                 }
 
             }
         }).start();
         return super.onStartCommand(intent, flags, startId);
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        // Initialize dominoes
     }
 }

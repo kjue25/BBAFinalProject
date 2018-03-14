@@ -28,4 +28,21 @@ public class Domino {
             condition.sensor.turnOff();
         }
     }
+
+    public boolean isOn() {
+        return isOn;
+    }
+
+    public boolean conditionsSatisfied() {
+        for (Condition input : inputs) {
+            if (!input.evaluate()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void triggerOutput(){
+        output.onTrigger();
+    }
 }
