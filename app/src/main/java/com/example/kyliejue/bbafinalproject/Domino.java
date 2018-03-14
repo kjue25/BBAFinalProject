@@ -1,8 +1,10 @@
 package com.example.kyliejue.bbafinalproject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Domino {
+// TODO: Consider if Parcelable should be used instead of Serializable
+public class Domino implements Serializable {
     ArrayList<Condition> inputs;
     Output output;
     private boolean isOn;
