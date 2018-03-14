@@ -30,7 +30,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".OutTileActivity" />
         <activity android:name=".OutputFlashlightActivity" />
-        <activity android:name=".OutputCameraActivity"></activity>
+        <activity android:name=".OutputCameraActivity" />
+        <activity android:name=".OutputSoundActivity"></activity>
     </application>
 
 </manifest>
