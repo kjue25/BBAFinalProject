@@ -35,11 +35,12 @@ public class OutputFlashlightActivity extends AppCompatActivity {
                 hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
         boolean isEnabled = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED;
-        Log.d("STATE", "hello");
-        Log.d("STATE", "" + turnOnButton);
-        Log.d("STATE", "" + enableButton);
-        Log.d("STATE", ""+isEnabled);
 
+
+//        Log.d("STATE", "hello");
+//        Log.d("STATE", "" + turnOnButton);
+//        Log.d("STATE", "" + enableButton);
+//        Log.d("STATE", ""+isEnabled);
 
         enableButton.setEnabled(!isEnabled);
         turnOnButton.setEnabled(isEnabled);
@@ -56,6 +57,8 @@ public class OutputFlashlightActivity extends AppCompatActivity {
         turnOnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //create outputFlashlight object
+                Output outputFlashlight = new OutputFlashlight();
                 if (hasCameraFlash) {
                     if (flashLightStatus)
                         flashLightOff();

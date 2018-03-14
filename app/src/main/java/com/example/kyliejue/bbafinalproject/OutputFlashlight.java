@@ -5,6 +5,11 @@ package com.example.kyliejue.bbafinalproject;
  */
 
 public class OutputFlashlight implements Output {
+    private int duration;
+
+    public void OutputFlashlight(int duration) {
+        this.duration = duration;
+    }
 
     @Override
     public void onTrigger() {

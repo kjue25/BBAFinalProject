@@ -19,6 +19,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Grant Permissions"
+        app:layout_constraintTop_toBottomOf="@+id/durationTextBox"
         tools:layout_editor_absoluteX="108dp"
         tools:layout_editor_absoluteY="134dp" />
+
+    <TextView
+        android:id="@+id/secsTextView"
+        android:layout_width="82dp"
+        android:layout_height="36dp"
+        android:text="secs"
+        app:layout_constraintLeft_toRightOf="@+id/durationTextBox"
+        tools:layout_editor_absoluteX="257dp"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <EditText
+        android:id="@+id/durationTextBox"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter duration"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="68dp" />
 </android.support.constraint.ConstraintLayout>
