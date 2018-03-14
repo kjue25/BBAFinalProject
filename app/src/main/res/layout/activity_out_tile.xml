@@ -6,4 +6,39 @@
     android:layout_height="match_parent"
     tools:context="com.example.kyliejue.bbafinalproject.outTileActivity">
 
+    <Button
+        android:id="@+id/textButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Text"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/speakerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speaker"
+        app:layout_constraintTop_toBottomOf="@+id/textButton"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="82dp"/>
+
+    <Button
+        android:id="@+id/cameraButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Camera"
+        app:layout_constraintTop_toBottomOf="@+id/speakerButton"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="154dp" />
+
+    <Button
+        android:id="@+id/flashlightButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FlashLight"
+        app:layout_constraintTop_toBottomOf="@+id/cameraButton"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="170dp" />
+
 </android.support.constraint.ConstraintLayout>

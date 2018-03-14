@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.example.kyliejue.bbafinalproject.outputFlashlightActivity">
 
+    <Button
+        android:id="@+id/turnOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turn Flashlight On"
+        app:layout_constraintTop_toBottomOf="@+id/enable"
+        tools:layout_editor_absoluteX="107dp" />
+
+    <Button
+        android:id="@+id/enable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grant Permissions"
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="134dp" />
 </android.support.constraint.ConstraintLayout>
