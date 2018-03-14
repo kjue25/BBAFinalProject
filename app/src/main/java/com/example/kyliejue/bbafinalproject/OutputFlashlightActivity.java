@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class OutputFlashlightActivity extends AppCompatActivity {
@@ -20,8 +21,8 @@ public class OutputFlashlightActivity extends AppCompatActivity {
     private Button enableButton;
     private Button turnOnButton;
     private static final int CAMERA_REQUEST = 50;
-    private boolean flashLightStatus = false;
     private boolean sensorCondition = true;
+    private boolean flashLightStatus = false;
 
 
     @Override
@@ -30,17 +31,13 @@ public class OutputFlashlightActivity extends AppCompatActivity {
         setContentView(R.layout.activity_output_flashlight);
         Button turnOnButton = (Button) findViewById(R.id.turnOn);
         Button enableButton = (Button) findViewById(R.id.enable);
+        final EditText editText = (EditText) findViewById(R.id.durationTextBox);
+
 
         final boolean hasCameraFlash = getPackageManager().
                 hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
         boolean isEnabled = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED;
-
-
-//        Log.d("STATE", "hello");
-//        Log.d("STATE", "" + turnOnButton);
-//        Log.d("STATE", "" + enableButton);
-//        Log.d("STATE", ""+isEnabled);
 
         enableButton.setEnabled(!isEnabled);
         turnOnButton.setEnabled(isEnabled);
@@ -48,8 +45,6 @@ public class OutputFlashlightActivity extends AppCompatActivity {
         enableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("STATE", "hello");
-
                 ActivityCompat.requestPermissions(OutputFlashlightActivity.this, new String[] {Manifest.permission.CAMERA}, CAMERA_REQUEST);
             }
         });
@@ -57,59 +52,65 @@ public class OutputFlashlightActivity extends AppCompatActivity {
         turnOnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int duration = Integer.parseInt(editText.getText().toString())*1000;
+                CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+
                 //create outputFlashlight object
-                Output outputFlashlight = new OutputFlashlight();
-                if (hasCameraFlash) {
-                    if (flashLightStatus)
-                        flashLightOff();
-                    else
-                        flashLightOn();
-                } else {
-                    Toast.makeText(OutputFlashlightActivity.this, "No flash available on your device",
-                            Toast.LENGTH_SHORT).show();
-                }
+                Output outputFlashlight = new OutputFlashlight(duration, cameraManager, hasCameraFlash);
+                outputFlashlight.onTrigger();
+
+//                if (hasCameraFlash) {
+//                    if (flashLightStatus)
+//                        flashLightOff();
+//                    else
+//                        flashLightOn(duration);
+//                } else {
+//                    Toast.makeText(OutputFlashlightActivity.this, "No flash available on your device",
+//                            Toast.LENGTH_SHORT).show();
+//                }
             }
         });
     }
 
-    private void flashLightOn() {
-        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-        long blinkDelay = 2000; //Delay in ms
-        boolean currentBlinkStatus = false;
-        String myString = "0101010101";
-
-        try {
-            String cameraId = cameraManager.getCameraIdList()[0];
-            for (int i = 0; i < myString.length(); i++) {
-                if(!currentBlinkStatus) {
-                    cameraManager.setTorchMode(cameraId, true);
-                    currentBlinkStatus = true;
-                }
-                else {
-                    cameraManager.setTorchMode(cameraId, false);
-                    currentBlinkStatus = false;
-                }
-                try {
-                    Thread.sleep(blinkDelay);
-                } catch(InterruptedException e){
-                    e.printStackTrace();
-                }
-                flashLightStatus = true;
-            }
-        } catch (CameraAccessException e) {
-        }
-    }
-
-    private void flashLightOff() {
-        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-
-        try {
-            String cameraId = cameraManager.getCameraIdList()[0];
-            cameraManager.setTorchMode(cameraId, false);
-            flashLightStatus = false;
-        } catch (CameraAccessException e) {
-        }
-    }
+//    private void flashLightOn(int duration) {
+//        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+//        long blinkDelay = 500; //Delay in ms
+//        long startTime = System.currentTimeMillis(); //fetch starting time
+//
+//        boolean currentBlinkStatus = false;
+//
+//        try {
+//            String cameraId = cameraManager.getCameraIdList()[0];
+//            while((System.currentTimeMillis() - startTime) < duration){
+//                if(!currentBlinkStatus) {
+//                    cameraManager.setTorchMode(cameraId, true);
+//                    currentBlinkStatus = true;
+//                }
+//                else {
+//                    cameraManager.setTorchMode(cameraId, false);
+//                    currentBlinkStatus = false;
+//                }
+//                try {
+//                    Thread.sleep(blinkDelay);
+//                } catch(InterruptedException e){
+//                    e.printStackTrace();
+//                }
+//                flashLightStatus = true;
+//            }
+//        } catch (CameraAccessException e) {
+//        }
+//    }
+//
+//    private void flashLightOff() {
+//        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+//
+//        try {
+//            String cameraId = cameraManager.getCameraIdList()[0];
+//            cameraManager.setTorchMode(cameraId, false);
+//            flashLightStatus = false;
+//        } catch (CameraAccessException e) {
+//        }
+//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
