@@ -47,9 +47,7 @@ public class DominoService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         new Thread(new Runnable(){
             public void run() {
-                // TODO Auto-generated method stub
-                while(true)
-                {
+                while(true) {
                     for (Domino domino : dominoes.values()) {
                         if (domino.isOn() && domino.conditionsSatisfied()) {
                             domino.triggerOutput();

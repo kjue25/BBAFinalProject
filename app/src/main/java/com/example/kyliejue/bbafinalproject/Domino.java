@@ -44,5 +44,6 @@ public class Domino {
 
     public void triggerOutput(){
         output.onTrigger();
+        isOn = !isOn;
     }
 }
