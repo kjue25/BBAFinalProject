@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class outputFlashlightActivity extends AppCompatActivity {
+public class OutputFlashlightActivity extends AppCompatActivity {
 
     private Button enableButton;
     private Button turnOnButton;
@@ -49,7 +49,7 @@ public class outputFlashlightActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d("STATE", "hello");
 
-                ActivityCompat.requestPermissions(outputFlashlightActivity.this, new String[] {Manifest.permission.CAMERA}, CAMERA_REQUEST);
+                ActivityCompat.requestPermissions(OutputFlashlightActivity.this, new String[] {Manifest.permission.CAMERA}, CAMERA_REQUEST);
             }
         });
 
@@ -62,7 +62,7 @@ public class outputFlashlightActivity extends AppCompatActivity {
                     else
                         flashLightOn();
                 } else {
-                    Toast.makeText(outputFlashlightActivity.this, "No flash available on your device",
+                    Toast.makeText(OutputFlashlightActivity.this, "No flash available on your device",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -117,7 +117,7 @@ public class outputFlashlightActivity extends AppCompatActivity {
                     enableButton.setText("Camera Enabled");
                     turnOnButton.setEnabled(true);
                 } else {
-                    Toast.makeText(outputFlashlightActivity.this, "Permission Denied for the Camera", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OutputFlashlightActivity.this, "Permission Denied for the Camera", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openEditPage(View view) {
-        Intent intent = new Intent(this, outputFlashlightActivity.class);
+        Intent intent = new Intent(this, OutputFlashlightActivity.class);
         startActivity(intent);
         setContentView(R.layout.activity_output_flashlight);
     }

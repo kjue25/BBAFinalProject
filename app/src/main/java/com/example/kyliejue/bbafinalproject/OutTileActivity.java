@@ -3,7 +3,7 @@ package com.example.kyliejue.bbafinalproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class outTileActivity extends AppCompatActivity {
+public class OutTileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -28,8 +28,8 @@
             android:name=".EditActivity"
             android:label="@string/title_activity_edit"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".outTileActivity" />
-        <activity android:name=".outputFlashlightActivity"></activity>
+        <activity android:name=".OutTileActivity" />
+        <activity android:name=".OutputFlashlightActivity"></activity>
     </application>
 
 </manifest>
