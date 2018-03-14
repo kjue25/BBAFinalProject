@@ -42,8 +42,16 @@ public class Domino {
         return true;
     }
 
-    public void triggerOutput(){
+    public void triggerOutput() {
         output.onTrigger();
         isOn = !isOn;
+    }
+
+    public void setOuput(Output newOutput) {
+        output = newOutput;
+    }
+
+    public Output getOutput() {
+        return output;
     }
 }
