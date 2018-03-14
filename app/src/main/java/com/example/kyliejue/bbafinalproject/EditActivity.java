@@ -64,7 +64,7 @@ public class EditActivity extends AppCompatActivity {
 
     //Should navigate to the OutTile creation page
     public void openOutTilePage(View view) {
-        // Need to add intent and call to setContentView here
+        //TODO: Add intent and call to setContentView here
     }
 
 }

@@ -13,12 +13,12 @@
         android:text="@string/title_in_tile"
         android:onClick="openInTilePage" />
 
-    <!--Uncomment when outTile activity has been created-->
-    <!--<Button xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--android:id="@+id/out_tile"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/title_out_tile"-->
-        <!--android:onClick="openOutTilePage" />-->
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/out_tile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_out_tile"
+        android:onClick="openOutTilePage"
+        android:layout_gravity="right"/>
 
 </android.support.design.widget.CoordinatorLayout>
