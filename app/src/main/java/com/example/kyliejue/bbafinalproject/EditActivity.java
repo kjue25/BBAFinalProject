@@ -40,7 +40,7 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent sensorEvent) {
         //Log.d("STATE", "sensor changing");
         currSensorValue = sensorEvent.values[0];
-        while (editDomino.isOn()) {
+        if (editDomino.isOn()) {
             evaluate();
         }
     }
@@ -144,7 +144,7 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
         } else if (requestCode == OUTTILE_CODE) {
             // Get output object from data.getExtras();
             Output output = (Output) data.getSerializableExtra("update_output");
-            Log.d("STATE", "Created Output with duration: " + ((OutputFlashlight) output).getDuration());
+//            Log.d("STATE", "Created Output with duration: " + ((OutputFlashlight) output).getDuration());
             editDomino.setOutput(output);
 
             // Show evaluate switch
@@ -163,8 +163,10 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
             }
             index++;
         }
-        editDomino.triggerOutput(getApplicationContext());
         editDomino.toggle();
+        Switch turnOn = findViewById(R.id.active_toggle);
+        turnOn.toggle();
+        editDomino.triggerOutput(getApplicationContext());
     }
 
 }
