@@ -28,15 +28,11 @@
             android:name=".EditActivity"
             android:label="@string/title_activity_edit"
             android:theme="@style/AppTheme.NoActionBar" />
-<<<<<<< HEAD
         <activity android:name=".OutTileActivity" />
         <activity android:name=".OutputFlashlightActivity" />
         <activity android:name=".OutputCameraActivity" />
         <activity android:name=".OutputSoundActivity"></activity>
-=======
-
         <activity android:name=".InTileActivity"></activity>
->>>>>>> 722d2555fc36387d1fa964378a8047a04e2cf049
     </application>
 
 </manifest>
