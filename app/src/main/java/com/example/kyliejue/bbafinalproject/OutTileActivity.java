@@ -52,7 +52,7 @@ public class OutTileActivity extends AppCompatActivity {
             Log.d("STATE", "Created Output with duration: " + ((OutputFlashlight) outputObject).getDuration());
         }
 
-        intent.putExtra("update_input", outputObject);
+        intent.putExtra("update_output", outputObject);
         setResult(RESULT_OK, intent);
         finish();
         Log.d("STATE", "TESTING OUTTILE");
