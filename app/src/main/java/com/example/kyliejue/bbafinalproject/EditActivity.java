@@ -14,44 +14,42 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-public class EditActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class EditActivity extends AppCompatActivity implements SensorEventListener {
 
     private Domino editDomino;
-    private Thread evalThread;
 
     // Request codes for OutTile and InTile activities
     // TODO: Move these to a res.values file
     private static final int INTILE_CODE = 0;
     private static final int OUTTILE_CODE = 1;
 
-    private class RawSensorListener implements SensorEventListener {
+    // This sensor code only works for our current prototype (only works if one sensor is active)
+    SensorManager sensorManager;
+    Sensor sensor;
+    float currSensorValue;
 
-        private SensorManager sensorManager;
-        private Sensor sensor;
-        private float currValue;
 
-        public RawSensorListener(int sensorType) {
-            sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-            sensor = sensorManager.getDefaultSensor(sensorType);
-            currValue = 0;
-        }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
 
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int i) {
-
-        }
-
-        @Override
-        public void onSensorChanged(SensorEvent sensorEvent) {
-            currValue = sensorEvent.values[0];
-        }
-
-        public float getCurrValue() {
-            return currValue;
-        }
     }
 
-    // TODO: Restore if convert to Parceable
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        //Log.d("STATE", "sensor changing");
+        currSensorValue = sensorEvent.values[0];
+        evaluate();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+// TODO: Restore if convert to Parceable
 //    private class DominoReceiver extends BroadcastReceiver {
 //        @Override
 //        public void onReceive(Context context, Intent intent) {
@@ -67,12 +65,40 @@ public class EditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        currSensorValue = 0;
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+
         Intent parentIntent = getIntent();
         setContentView(R.layout.activity_edit);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         editDomino = new Domino();
+
+        Switch turnOn = findViewById(R.id.active_toggle);
+        turnOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                editDomino.toggle();
+//                if (b) {
+//                    Log.d("STATE", "switch on!");
+//                    evalThread = new Thread(new Runnable() {
+//                        public void run() {
+//                            while (true) { //FIXME ?
+//                                evaluate();
+//                            }
+//                        }
+//                    });
+//                    evalThread.start();
+//                } else {
+//                    Log.d("STATE", "switch off!");
+//                    if (evalThread != null) {
+//                        evalThread.interrupt();
+//                    }
+//                }
+            }
+        });
 
         // TODO: Determine if starting service needs to happen in the main activity
 //        Intent intent = new Intent(this, DominoService.class);
@@ -123,50 +149,35 @@ public class EditActivity extends AppCompatActivity {
             // TODO: Get index from data as well when >1 condition allowed
             Condition condition = (Condition) data.getSerializableExtra("update_input");
             editDomino.setInput(0, condition);
+            sensor = sensorManager.getDefaultSensor(condition.getSensor());
+            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+
             Log.d("STATE", Double.toString(editDomino.getInput().get(0).getSensor()));
         } else if (requestCode == OUTTILE_CODE) {
             // Get output object from data.getExtras();
             Output output = (Output) data.getSerializableExtra("update_output");
+            Log.d("STATE", "Created Output with duration: " + ((OutputFlashlight) output).getDuration());
             editDomino.setOutput(output);
 
             // Show evaluate switch
             Switch turnOn = findViewById(R.id.active_toggle);
             if (turnOn != null) {
                 turnOn.setVisibility(View.VISIBLE);
-                turnOn.setOnCheckedChangeListener(null);
-            }
-        }
-    }
-
-    // TODO: NEED TO TEST
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            editDomino.toggle();
-            evalThread = new Thread(new Runnable() {
-                public void run() {
-                    while (true) { //FIXME ?
-                        evaluate();
-                    }
-                }
-            });
-           evalThread.start();
-        } else {
-            if (evalThread != null) {
-                evalThread.interrupt();
             }
         }
     }
 
     private void evaluate() {
         if (editDomino.isOn()) {
+            Log.d("STATE", "Domino is ON");
             int index = 0;
             for (Condition condition : editDomino.getInput()) {
-                RawSensorListener listener = new RawSensorListener(condition.getSensor());
-                if (!editDomino.evaluateCondition(index, listener.getCurrValue())) {
+                if (!editDomino.evaluateCondition(index, currSensorValue)) {
                     return;
                 }
                 index++;
             }
+            Log.d("STATE", "Domino is running!");
             editDomino.triggerOutput(getApplicationContext());
             editDomino.toggle();
         }
