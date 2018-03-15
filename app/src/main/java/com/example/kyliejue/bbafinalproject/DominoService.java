@@ -1,11 +1,15 @@
 package com.example.kyliejue.bbafinalproject;
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class DominoService extends IntentService {
@@ -17,9 +21,7 @@ public class DominoService extends IntentService {
 
     public DominoService() {
         super("DominoService");
-        dominoes = new HashMap<String, Domino>(); // Should this go in the constructor?
-        Domino testDom = new Domino();
-        dominoes.put("testDominoName", testDom);
+        dominoes = new HashMap<>(); // Should this go in the constructor?
     }
 
     @Override
@@ -41,6 +43,14 @@ public class DominoService extends IntentService {
     @Override
     public void onCreate() {
         super.onCreate();
+        // TODO: Remove this test code
+        Domino testDom = new Domino();
+        HashMap<String, ArrayList<String>> testParams = new HashMap<>();
+        testParams.put("brightness", new ArrayList<>(Arrays.asList("bright", "dark")));
+        testDom.setInput(0, new Condition(
+                new RawSensorInput(getApplicationContext(), Sensor.TYPE_LIGHT,
+                        testParams), "=", "bright"));
+        dominoes.put("testDominoName", testDom);
     }
 
     @Override

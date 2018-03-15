@@ -20,7 +20,6 @@ public class SensorActivity extends AppCompatActivity implements SensorEventList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor);
 
-
         // Get an instance of the sensor service, and use that to get an instance of
         // a particular sensor.
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
