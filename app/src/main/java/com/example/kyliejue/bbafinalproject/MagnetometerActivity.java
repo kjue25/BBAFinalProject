@@ -10,8 +10,5 @@ public class MagnetometerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_magnetometer);
-
-        Condition testCondition = new Condition(Sensor.TYPE_MAGNETIC_FIELD, "=", "10");
-
     }
 }
