@@ -40,7 +40,9 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent sensorEvent) {
         //Log.d("STATE", "sensor changing");
         currSensorValue = sensorEvent.values[0];
-        evaluate();
+        while (editDomino.isOn()) {
+            evaluate();
+        }
     }
 
     @Override
@@ -81,22 +83,6 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 editDomino.toggle();
-//                if (b) {
-//                    Log.d("STATE", "switch on!");
-//                    evalThread = new Thread(new Runnable() {
-//                        public void run() {
-//                            while (true) { //FIXME ?
-//                                evaluate();
-//                            }
-//                        }
-//                    });
-//                    evalThread.start();
-//                } else {
-//                    Log.d("STATE", "switch off!");
-//                    if (evalThread != null) {
-//                        evalThread.interrupt();
-//                    }
-//                }
             }
         });
 
@@ -168,19 +154,17 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void evaluate() {
-        if (editDomino.isOn()) {
-            Log.d("STATE", "Domino is ON");
-            int index = 0;
-            for (Condition condition : editDomino.getInput()) {
-                if (!editDomino.evaluateCondition(index, currSensorValue)) {
-                    return;
-                }
-                index++;
+        Log.d("STATE", "Domino is ON");
+        int index = 0;
+        for (Condition condition : editDomino.getInput()) {
+            if (!editDomino.evaluateCondition(index, currSensorValue)) {
+                return;
             }
-            Log.d("STATE", "Domino is running!");
-            editDomino.triggerOutput(getApplicationContext());
-            editDomino.toggle();
+            index++;
         }
+        Log.d("STATE", "Domino is running!");
+        editDomino.triggerOutput(getApplicationContext());
+        editDomino.toggle();
     }
 
 }
