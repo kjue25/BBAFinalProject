@@ -20,28 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.action_discover:
-
-                                break;
-                            case R.id.action_myd:
-
-                                break;
-                            case R.id.action_create:
-
-                                break;
-                        }
-                        return false;
-                    }
-                });
     }
 
     public void openEditPage(View view) {
@@ -51,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         setContentView(R.layout.activity_edit);
     }
+
 
 
 }

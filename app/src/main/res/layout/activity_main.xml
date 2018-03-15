@@ -21,6 +21,8 @@
             android:background="@drawable/icon_add"
             android:onClick="openEditPage"
             android:scaleType="fitCenter" />
+
+
     </FrameLayout>
 
 

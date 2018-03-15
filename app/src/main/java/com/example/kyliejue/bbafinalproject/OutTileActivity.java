@@ -9,6 +9,7 @@ import android.view.View;
 public class OutTileActivity extends AppCompatActivity {
 
     private static final int FLASHLIGHT_CODE = 4;
+    private static final int SOUND_CODE = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +31,13 @@ public class OutTileActivity extends AppCompatActivity {
 
 
     public void onSound(View view){
-        Intent intent = new Intent(this, OutputSoundActivity.class);
-        startActivity(intent);
-        setContentView(R.layout.activity_output_flashlight);
+        Intent soundIntent = new Intent(this, OutputSoundActivity.class);
+        if (soundIntent.getSerializableExtra("domino_output") != null) {
+            Output output = (Output) soundIntent.getSerializableExtra("domino_output");
+            soundIntent.putExtra("domino_output", soundIntent);
+        }
+        startActivityForResult(soundIntent, SOUND_CODE);
+        Log.d("STATE", "WAITING FOR SOUND");
     }
 
     //when I receive object from the specific outTileActivity pages...
@@ -49,7 +54,12 @@ public class OutTileActivity extends AppCompatActivity {
         if (requestCode == FLASHLIGHT_CODE) {
             Log.d("STATE", "Received Flashlight output");
             outputObject = (Output) data.getSerializableExtra("update_output");
-            Log.d("STATE", "Created Output with duration: " + ((OutputFlashlight) outputObject).getDuration());
+            Log.d("STATE", "Created flashlight with duration: " + ((OutputFlashlight) outputObject).getDuration());
+        }
+        if (requestCode == SOUND_CODE) {
+            Log.d("STATE", "Received Sound output");
+            outputObject = (Output) data.getSerializableExtra("update_output");
+            Log.d("STATE", "Created sound output");
         }
 
         intent.putExtra("update_output", outputObject);
@@ -57,4 +67,6 @@ public class OutTileActivity extends AppCompatActivity {
         finish();
         Log.d("STATE", "TESTING OUTTILE");
     }
+
+
 }
