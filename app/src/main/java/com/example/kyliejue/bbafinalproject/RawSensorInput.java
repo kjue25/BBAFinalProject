@@ -6,18 +6,23 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
-import java.util.Map;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+// TODO: See if this can be Parcelable for passing between Activities; issue with nonSerializable
 public class RawSensorInput implements SensorEventListener, SensorInput {
     private SensorManager sensorManager;
     private Sensor sensor;
-    private Map parameters;
+    private HashMap<String, ArrayList<String>> parameters;
     private float curValue;
 
-    public RawSensorInput(Context context, int sensorType, Map raw_params) {
+    public RawSensorInput(Context context, int sensorType,
+                          HashMap<String, ArrayList<String>> raw_params) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(sensorType);
         parameters = raw_params;
+
     }
 
     @Override

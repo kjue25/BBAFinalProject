@@ -15,6 +15,12 @@ public class Condition implements Serializable {
         chosenValue = "";
     }
 
+    public Condition(SensorInput sense, String op, String chosenVal) {
+        sensor = sense;
+        operand = op;
+        chosenValue = chosenVal;
+    }
+
     // The following methods will be called from the InTile page
     public void updateSensor() {
         //TODO

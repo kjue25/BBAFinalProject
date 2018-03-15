@@ -52,7 +52,12 @@ public class Domino implements Serializable {
     public void setInput(int index, Condition condition) {
         // TODO: Add the ability to update multiple conditions in input
         // TODO: Maybe just change condition param to ArrayList<Condition>; check Serializability
-        inputs.set(index, condition);
+        // REALLY SUBOPTIMAL
+        if (inputs.size() > index) {
+            inputs.set(index, condition);
+        } else {
+            inputs.add(condition);
+        }
     }
 
     public ArrayList<Condition> getInput() {
