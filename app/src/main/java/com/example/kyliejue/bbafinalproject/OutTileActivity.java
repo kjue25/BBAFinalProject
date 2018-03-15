@@ -45,6 +45,7 @@ public class OutTileActivity extends AppCompatActivity {
         if (requestCode == FLASHLIGHT_CODE) {
             Log.d("STATE", "Received Flashlight output");
             outputObject = (Output) data.getSerializableExtra("update_output");
+            Log.d("STATE", "Created Output with duration: " + ((OutputFlashlight) outputObject).getDuration());
         }
 
         intent.putExtra("update_input", outputObject);
