@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openEditPage(View view) {
-        Intent intent = new Intent(this, OutputCameraActivity.class);
+        Intent intent = new Intent(this, OutputSoundActivity.class);
         startActivity(intent);
-        setContentView(R.layout.activity_output_camera);
+        setContentView(R.layout.activity_output_sound);
     }
 
 }
