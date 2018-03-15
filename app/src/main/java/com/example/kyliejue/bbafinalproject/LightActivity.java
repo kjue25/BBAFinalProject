@@ -34,8 +34,6 @@ public class LightActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
         operand = parent.getItemAtPosition(pos).toString();
         Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
     }
@@ -59,11 +57,10 @@ public class LightActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void addKeyListener() {
-
-        // get edittext component
+        // Get text box component
         editLux = findViewById(R.id.luxTextBox);
 
-        // add a keylistener to keep track user input
+        // Add a keylistener to keep track user input
         editLux.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 // if keydown and "enter" is pressed
@@ -77,5 +74,4 @@ public class LightActivity extends AppCompatActivity implements AdapterView.OnIt
             }
         });
     }
-    // set properties of condition and return in
 }
