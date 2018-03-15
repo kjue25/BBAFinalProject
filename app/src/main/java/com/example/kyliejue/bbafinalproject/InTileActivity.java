@@ -20,10 +20,9 @@ public class InTileActivity extends AppCompatActivity {
     }
 
     public void openLightSensor(View view) {
-        Condition condition = new Condition();
         Intent intent = new Intent(this, LightActivity.class);
         if (intent.getSerializableExtra("domino_input") != null) {
-            condition = (Condition) intent.getSerializableExtra("domino_input");
+            Condition condition = (Condition) intent.getSerializableExtra("domino_input");
             intent.putExtra("domino_input", condition);
         }
         startActivityForResult(intent, LIGHT_CODE);

@@ -58,8 +58,8 @@ public class OutputFlashlightActivity extends AppCompatActivity {
                 //create outputFlashlight object
                 Output outputFlashlight = new OutputFlashlight(duration, hasCameraFlash);
                 Intent outputIntent = new Intent();
-                outputIntent.putExtra("outputObject", outputFlashlight);
-                setResult(1, outputIntent);
+                outputIntent.putExtra("update_output", outputFlashlight);
+                setResult(RESULT_OK, outputIntent);
 
 
                 Log.d("STATE", "now sending the flashlight object to outtile activity");
