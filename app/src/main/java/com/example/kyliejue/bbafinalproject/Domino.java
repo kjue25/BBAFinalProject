@@ -1,6 +1,7 @@
 package com.example.kyliejue.bbafinalproject;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class Domino implements Serializable {
         // TODO: Add the ability to update multiple conditions in input
         // TODO: Maybe just change condition param to ArrayList<Condition>; check Serializability
         // REALLY SUBOPTIMAL
+        Log.d("STATE", "SETTING INPUT");
         if (inputs.size() > index) {
             inputs.set(index, condition);
         } else {

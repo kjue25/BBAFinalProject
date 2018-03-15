@@ -35,6 +35,14 @@ public class Condition implements Serializable {
         chosenValue = chosen;
     }
 
+    public String getOp() {
+        return operand;
+    }
+
+    public String getChosenValue() {
+        return chosenValue;
+    }
+
     public int getSensor() {
         return sensor;
     }

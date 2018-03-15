@@ -9,6 +9,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -33,7 +34,6 @@ public class EditActivity extends AppCompatActivity {
             sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
             sensor = sensorManager.getDefaultSensor(sensorType);
             currValue = 0;
-            editDomino = new Domino();
         }
 
         @Override
@@ -72,6 +72,8 @@ public class EditActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        editDomino = new Domino();
+
         // TODO: Determine if starting service needs to happen in the main activity
 //        Intent intent = new Intent(this, DominoService.class);
 //        intent.setAction("getDomino");
@@ -95,26 +97,32 @@ public class EditActivity extends AppCompatActivity {
     public void openInTilePage(View view) {
         Intent intent = new Intent(this, InTileActivity.class);
         //TODO: Fix the following line to handle ArrayList<Condition>
-        //intent.putExtra("domino_input", editDomino.getInput().get(0));
+        if (!editDomino.getInput().isEmpty()) {
+            intent.putExtra("domino_input", editDomino.getInput().get(0));
+        }
         startActivityForResult(intent, INTILE_CODE);
         setContentView(R.layout.activity_in_tile);
+        Log.d("STATE", "WAITING FOR INTILE");
     }
 
     //Navigates to the OutTile creation page
     public void openOutTilePage(View view) {
         // TODO: Replace SensorActivity.class with OutTileActivity.class
         Intent intent = new Intent(this, SensorActivity.class);
-        intent.putExtra("domino_output", editDomino.getOutput());
+        intent.putExtra("domino_output", editDomino.getOutput()); // TODO: Make sure this can handle null
         startActivityForResult(intent, OUTTILE_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d("STATE", "RECEIVED RESULT");
+
         if (requestCode == INTILE_CODE) {
-            // TODO: Get index from data as well
+            // TODO: Get index from data as well when >1 condition allowed
             Condition condition = (Condition) data.getSerializableExtra("update_input");
             editDomino.setInput(0, condition);
+            Log.d("STATE", Double.toString(editDomino.getInput().get(0).getSensor()));
         } else if (requestCode == OUTTILE_CODE) {
             // Get output object from data.getExtras();
             Output output = (Output) data.getSerializableExtra("update_output");
