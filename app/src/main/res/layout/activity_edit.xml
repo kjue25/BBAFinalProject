@@ -7,7 +7,6 @@ android:layout_height="match_parent"
 android:background="@drawable/backgroundimage"
 tools:context=".EditActivity">
 
-
     <ImageButton
         android:id="@+id/inTile"
         android:layout_width="100dp"
@@ -27,5 +26,14 @@ tools:context=".EditActivity">
         android:layout_margin="@dimen/outtile_margin"
         android:background="@drawable/outtile"
         android:onClick="openOutTilePage" />
+
+
+    <Switch
+        android:id="@+id/active_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="On"
+        android:layout_gravity="bottom"
+        android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

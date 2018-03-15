@@ -1,5 +1,8 @@
 package com.example.kyliejue.bbafinalproject;
 
+import android.content.Context;
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -19,33 +22,39 @@ public class Domino implements Serializable {
         isOn = !isOn;
     }
 
-    public void turnOnSensors() {
-        for (Condition condition : inputs) {
-            condition.sensor.turnOn();
-        }
-    }
-
-    public void turnOffSensors(){
-        for (Condition condition : inputs) {
-            condition.sensor.turnOff();
-        }
-    }
+//    public void turnOnSensors() {
+//        for (Condition condition : inputs) {
+//            condition.sensor.turnOn();
+//        }
+//    }
+//
+//    public void turnOffSensors(){
+//        for (Condition condition : inputs) {
+//            condition.sensor.turnOff();
+//        }
+//    }
 
     public boolean isOn() {
         return isOn;
     }
 
-    public boolean conditionsSatisfied() {
-        for (Condition input : inputs) {
-            if (!input.evaluate()) {
-                return false;
-            }
-        }
-        return true;
+    // TODO: Restore if Parcelable
+//    public boolean conditionsSatisfied() {
+//        for (Condition input : inputs) {
+//            if (!input.evaluate()) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
+    public boolean evaluateCondition(int conditionIndex, float sensorVal) {
+        Condition condition = inputs.get(conditionIndex);
+        return condition.evaluate(sensorVal);
     }
 
-    public void triggerOutput() {
-        output.onTrigger();
+    public void triggerOutput(Context appContext) {
+        output.onTrigger(appContext);
         isOn = !isOn;
     }
 
@@ -53,6 +62,7 @@ public class Domino implements Serializable {
         // TODO: Add the ability to update multiple conditions in input
         // TODO: Maybe just change condition param to ArrayList<Condition>; check Serializability
         // REALLY SUBOPTIMAL
+        Log.d("STATE", "SETTING INPUT");
         if (inputs.size() > index) {
             inputs.set(index, condition);
         } else {
