@@ -1,5 +1,6 @@
 package com.example.kyliejue.bbafinalproject;
 
+import android.app.Application;
 import android.content.Context;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
@@ -13,30 +14,30 @@ import android.widget.Toast;
 public class OutputFlashlight implements Output {
     private int duration;
     private boolean hasCameraFlash;
-    private OutputFlashlightActivity context;
+//    private OutputFlashlight context;
 
-    public OutputFlashlight(int duration, boolean hasCameraFlash, OutputFlashlightActivity context ) {
+    public OutputFlashlight(int duration, boolean hasCameraFlash ) {
         this.duration = duration;
         this.hasCameraFlash = hasCameraFlash;
-        this.context = context;
+//        this.context = this;
     }
 
     @Override
-    public void onTrigger() {
+    public void onTrigger(Context context) {
         if (this.hasCameraFlash) {
-                flashLightOn();
+                flashLightOn(context);
         } else {
             //TO DO
-            Toast.makeText(this.context, "No flash available on your device",
-                    Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this.context, "No flash available on your device",
+//                    Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void flashLightOn() {
+    private void flashLightOn(Context context) {
         long blinkDelay = 500; //Delay in ms
         long startTime = System.currentTimeMillis(); //fetch starting time
         boolean currentBlinkStatus = false;
-        CameraManager cameraManager = (CameraManager) this.context.getSystemService(Context.CAMERA_SERVICE);
+        CameraManager cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
 
 
         try {

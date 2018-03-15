@@ -1,7 +1,9 @@
 package com.example.kyliejue.bbafinalproject;
 
 import android.Manifest;
+import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraManager;
 import android.support.annotation.NonNull;
@@ -9,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,8 +56,16 @@ public class OutputFlashlightActivity extends AppCompatActivity {
                 CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
 
                 //create outputFlashlight object
-                Output outputFlashlight = new OutputFlashlight(duration, hasCameraFlash, OutputFlashlightActivity.this);
-                outputFlashlight.onTrigger();
+                Output outputFlashlight = new OutputFlashlight(duration, hasCameraFlash);
+                Intent outputIntent = new Intent();
+                outputIntent.putExtra("outputObject", outputFlashlight);
+                setResult(1, outputIntent);
+
+
+                Log.d("STATE", "now sending the flashlight object to outtile activity");
+                outputFlashlight.onTrigger(getApplicationContext());
+
+                finish();
             }
         });
     }

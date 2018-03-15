@@ -1,5 +1,7 @@
 package com.example.kyliejue.bbafinalproject;
 
+import android.content.Context;
+
 /**
  * Created by aashnashroff on 3/14/18.
  */
@@ -10,7 +12,7 @@ public class OutputSound implements Output {
     }
 
     @Override
-    public void onTrigger() {
+    public void onTrigger(Context context) {
 
     }
 }

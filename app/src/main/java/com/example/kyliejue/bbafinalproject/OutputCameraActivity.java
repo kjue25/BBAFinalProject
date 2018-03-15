@@ -22,7 +22,7 @@ public class OutputCameraActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //create OutputCamera object
                 Output outputCamera = new OutputCamera(OutputCameraActivity.this, mImageView);
-                outputCamera.onTrigger();
+                outputCamera.onTrigger(getApplicationContext());
             }
         });
     }

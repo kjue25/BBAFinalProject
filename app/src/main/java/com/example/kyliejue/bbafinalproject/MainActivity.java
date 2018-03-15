@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openEditPage(View view) {
-        Intent intent = new Intent(this, OutputSoundActivity.class);
+        Intent intent = new Intent(this, OutTileActivity.class);
         startActivity(intent);
-        setContentView(R.layout.activity_output_sound);
+        setContentView(R.layout.activity_out_tile);
     }
 
 }

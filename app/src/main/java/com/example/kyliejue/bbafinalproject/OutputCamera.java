@@ -1,5 +1,6 @@
 package com.example.kyliejue.bbafinalproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ public class OutputCamera implements Output {
     }
 
     @Override
-    public void onTrigger(){
+    public void onTrigger(Context context){
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(this.context.getPackageManager()) != null) {
             this.context.startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
