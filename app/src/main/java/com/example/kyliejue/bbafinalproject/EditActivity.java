@@ -41,7 +41,7 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent sensorEvent) {
         //Log.d("STATE", "sensor changing");
         currSensorValue = sensorEvent.values[0];
-        if (editDomino.isOn()) {
+        while (editDomino.isOn()) {
             evaluate();
         }
     }
@@ -164,10 +164,8 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
             }
             index++;
         }
-        editDomino.toggle();
-        Switch turnOn = findViewById(R.id.active_toggle);
-        turnOn.toggle();
         editDomino.triggerOutput(getApplicationContext());
+        editDomino.toggle();
     }
 
 }
