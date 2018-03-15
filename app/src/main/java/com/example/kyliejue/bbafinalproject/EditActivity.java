@@ -145,7 +145,7 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
         } else if (requestCode == OUTTILE_CODE) {
             // Get output object from data.getExtras();
             Output output = (Output) data.getSerializableExtra("update_output");
-            Log.d("STATE", "Created Output with duration: " + ((OutputFlashlight) output).getDuration());
+//            Log.d("STATE", "Created Output with duration: " + ((OutputFlashlight) output).getDuration());
             editDomino.setOutput(output);
 
             // Show evaluate switch
