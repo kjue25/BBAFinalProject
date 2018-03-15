@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InTileActivity">
+    android:background="@drawable/intile_background"
+    tools:context=".InTileActivity"
+    >
 
-    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <ImageButton
         android:id="@+id/lightButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Light"
+        android:layout_width="80dp"
+        android:layout_height="125dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="210dp"
+        android:background="@drawable/icon_light"
         android:onClick="openLightSensor" />
 
-    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+    <ImageButton
         android:id="@+id/magnetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Magnetometer"
+        android:layout_width="110dp"
+        android:layout_height="125dp"
+        android:layout_marginLeft="126dp"
+        android:layout_marginTop="208dp"
+        android:background="@drawable/icon_magnetometer"
         android:onClick="openMagnetometer" />
 
-</android.support.design.widget.CoordinatorLayout>
+
+</FrameLayout>

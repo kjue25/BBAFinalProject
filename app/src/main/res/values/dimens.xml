@@ -1,3 +1,8 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="out_margin">24dp</dimen>
+    <dimen name="intile_margin">300px</dimen>
+    <dimen name="outtile_margin">40px</dimen>
+    <dimen name="duration">60px</dimen>
+    <dimen name="permissions">100px</dimen>
 </resources>

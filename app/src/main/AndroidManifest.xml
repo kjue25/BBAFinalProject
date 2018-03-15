@@ -28,8 +28,12 @@
             android:name=".EditActivity"
             android:label="@string/title_activity_edit"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".OutTileActivity" />
-        <activity android:name=".OutputFlashlightActivity" />
+        <activity android:name=".OutTileActivity"
+                  android:label="OutTileActivity"
+                  android:theme="@style/AppTheme.NoActionBar"       />
+        <activity android:name=".OutputFlashlightActivity"
+                  android:label="OutputFlashlightActivity"
+                  android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".OutputCameraActivity" />
         <activity android:name=".OutputSoundActivity" />
         <activity android:name=".InTileActivity" />

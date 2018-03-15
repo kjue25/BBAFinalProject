@@ -15,7 +15,9 @@ public class OutTileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_out_tile);
+
     }
+
 
     public void onFlashlight(View view){
         Intent flashlightIntent = new Intent(this, OutputFlashlightActivity.class);
@@ -26,6 +28,7 @@ public class OutTileActivity extends AppCompatActivity {
         startActivityForResult(flashlightIntent, FLASHLIGHT_CODE);
         Log.d("STATE", "WAITING FOR FLASHLIGHT");
     }
+
 
     public void onSound(View view){
         Intent soundIntent = new Intent(this, OutputSoundActivity.class);

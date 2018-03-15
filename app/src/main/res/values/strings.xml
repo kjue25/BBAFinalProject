@@ -4,4 +4,8 @@
     <string name="title_activity_edit">EditActivity</string>
     <string name="title_in_tile">InTile</string>
     <string name="title_out_tile">OutTile</string>
+    <string name="discover">Discover</string>
+    <string name="challenges">Challenges</string>
+    <string name="create">Create</string>
+    <string name="myd">My Dominoes</string>
 </resources>

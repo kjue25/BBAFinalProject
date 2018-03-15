@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/outtile_background_nobutton"
     tools:context=".OutTileActivity">
 
-    <Button
+
+    <ImageButton
         android:id="@+id/textButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Text"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="80dp"
+        android:layout_height="130dp"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/icon_text" />
 
-    <Button
+    <ImageButton
         android:id="@+id/soundButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="130dp"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="380dp"
         android:onClick="onSound"
-        android:text="Sound"
-        app:layout_constraintTop_toBottomOf="@+id/textButton"
-        tools:layout_editor_absoluteX="30dp" />
+        android:background="@drawable/icon_sound" />
 
-    <Button
-        android:id="@+id/cameraButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Camera"
-        app:layout_constraintTop_toBottomOf="@+id/soundButton"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="154dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/flashlightButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="130dp"
         android:onClick="onFlashlight"
-        android:text="FlashLight"
-        app:layout_constraintTop_toBottomOf="@+id/cameraButton"
-        tools:layout_editor_absoluteX="30dp" />
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="380dp"
+        android:background="@drawable/icon_flashlight"/>
 
-</android.support.constraint.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/cameraButton"
+        android:layout_width="80dp"
+        android:layout_height="130dp"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/icon_camera" />
+
+
+
+</FrameLayout>

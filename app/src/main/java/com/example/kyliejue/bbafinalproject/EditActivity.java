@@ -20,6 +20,7 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
 
     private Domino editDomino;
 
+
     // Request codes for OutTile and InTile activities
     // TODO: Move these to a res.values file
     private static final int INTILE_CODE = 0;
@@ -40,7 +41,7 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent sensorEvent) {
         //Log.d("STATE", "sensor changing");
         currSensorValue = sensorEvent.values[0];
-        if (editDomino.isOn()) {
+        while (editDomino.isOn()) {
             evaluate();
         }
     }
@@ -163,10 +164,8 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
             }
             index++;
         }
-        editDomino.toggle();
-        Switch turnOn = findViewById(R.id.active_toggle);
-        turnOn.toggle();
         editDomino.triggerOutput(getApplicationContext());
+        editDomino.toggle();
     }
 
 }

@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.kyliejue.bbafinalproject.OutputSoundActivity">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/out_sound_background"
+tools:context=".OutputSoundActivity">
+
 
     <Button
         android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="500dp"
+        android:background="@color/colorPrimary"
+        android:text="Next"
+        android:textColor="@color/white"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="33dp" />
-</android.support.constraint.ConstraintLayout>
+
+
+</FrameLayout>
