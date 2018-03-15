@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".EditActivity">
 
-
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/in_tile"
         android:layout_width="wrap_content"
@@ -14,12 +13,20 @@
         android:text="@string/title_in_tile"
         android:onClick="openInTilePage" />
 
-    <!--Uncomment when outTile activity has been created-->
-    <!--<Button xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--android:id="@+id/out_tile"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/title_out_tile"-->
-        <!--android:onClick="openOutTilePage" />-->
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/out_tile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_out_tile"
+        android:onClick="openOutTilePage"
+        android:layout_gravity="right"/>
+
+    <Switch
+        android:id="@+id/active_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="On"
+        android:layout_gravity="bottom"
+        android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>
