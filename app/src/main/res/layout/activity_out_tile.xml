@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/outtile_background_nobutton"
-    tools:context="com.example.kyliejue.bbafinalproject.OutTileActivity">
+    tools:context=".OutTileActivity">
+
 
     <ImageButton
         android:id="@+id/textButton"

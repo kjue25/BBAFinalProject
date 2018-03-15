@@ -37,6 +37,8 @@
         <activity android:name=".OutputCameraActivity" />
         <activity android:name=".OutputSoundActivity" />
         <activity android:name=".InTileActivity" />
+        <activity android:name=".LightActivity" />
+        <activity android:name=".MagnetometerActivity"></activity>
     </application>
 
 </manifest>

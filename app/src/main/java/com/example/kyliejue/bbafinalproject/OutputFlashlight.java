@@ -22,6 +22,14 @@ public class OutputFlashlight implements Output {
 //        this.context = this;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public boolean getHasCameraFlash() {
+        return hasCameraFlash;
+    }
+
     @Override
     public void onTrigger(Context context) {
         if (this.hasCameraFlash) {
