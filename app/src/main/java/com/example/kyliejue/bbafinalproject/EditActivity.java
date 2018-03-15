@@ -81,6 +81,8 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
         Switch turnOn = findViewById(R.id.active_toggle);
         turnOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
+
+
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 editDomino.toggle();
             }
@@ -154,7 +156,6 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void evaluate() {
-        Log.d("STATE", "Domino is ON");
         int index = 0;
         for (Condition condition : editDomino.getInput()) {
             if (!editDomino.evaluateCondition(index, currSensorValue)) {
@@ -162,7 +163,6 @@ public class EditActivity extends AppCompatActivity implements SensorEventListen
             }
             index++;
         }
-        Log.d("STATE", "Domino is running!");
         editDomino.triggerOutput(getApplicationContext());
         editDomino.toggle();
     }
