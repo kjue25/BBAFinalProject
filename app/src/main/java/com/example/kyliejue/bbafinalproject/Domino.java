@@ -19,29 +19,35 @@ public class Domino implements Serializable {
         isOn = !isOn;
     }
 
-    public void turnOnSensors() {
-        for (Condition condition : inputs) {
-            condition.sensor.turnOn();
-        }
-    }
-
-    public void turnOffSensors(){
-        for (Condition condition : inputs) {
-            condition.sensor.turnOff();
-        }
-    }
+//    public void turnOnSensors() {
+//        for (Condition condition : inputs) {
+//            condition.sensor.turnOn();
+//        }
+//    }
+//
+//    public void turnOffSensors(){
+//        for (Condition condition : inputs) {
+//            condition.sensor.turnOff();
+//        }
+//    }
 
     public boolean isOn() {
         return isOn;
     }
 
-    public boolean conditionsSatisfied() {
-        for (Condition input : inputs) {
-            if (!input.evaluate()) {
-                return false;
-            }
-        }
-        return true;
+    // TODO: Restore if Parcelable
+//    public boolean conditionsSatisfied() {
+//        for (Condition input : inputs) {
+//            if (!input.evaluate()) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
+    public boolean evaluateCondition(int conditionIndex, float sensorVal) {
+        Condition condition = inputs.get(conditionIndex);
+        return condition.evaluate(sensorVal);
     }
 
     public void triggerOutput() {

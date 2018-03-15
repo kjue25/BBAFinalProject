@@ -21,4 +21,12 @@
         android:onClick="openOutTilePage"
         android:layout_gravity="right"/>
 
+    <Switch
+        android:id="@+id/active_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="On"
+        android:layout_gravity="bottom"
+        android:visibility="gone" />
+
 </android.support.design.widget.CoordinatorLayout>
