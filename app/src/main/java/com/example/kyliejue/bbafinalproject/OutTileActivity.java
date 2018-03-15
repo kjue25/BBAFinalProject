@@ -12,16 +12,22 @@ public class OutTileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_out_tile);
+
     }
+
 
     public void onFlashlight(View view){
         Intent flashlightIntent = new Intent(this, OutputFlashlightActivity.class);
         startActivityForResult(flashlightIntent, 1);
+        setContentView(R.layout.activity_output_flashlight);
+
     }
+
 
     public void onSound(View view){
         Intent intent = new Intent(this, OutputSoundActivity.class);
         startActivity(intent);
+        setContentView(R.layout.activity_output_flashlight);
     }
 
     //when I receive object from the specific outTileActivity pages...

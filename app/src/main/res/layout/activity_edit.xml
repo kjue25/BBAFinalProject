@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@drawable/backgroundimage"
+android:background="@drawable/edit_background"
 tools:context=".EditActivity">
 
     <ImageButton
         android:id="@+id/inTile"
         android:layout_width="100dp"
         android:layout_height="200dp"
-        android:layout_gravity="left|center"
-        android:layout_margin="@dimen/tile_margin"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/intile"
         android:onClick="openInTilePage"
         android:padding="@android:dimen/notification_large_icon_width"
@@ -22,8 +22,8 @@ tools:context=".EditActivity">
         android:id="@+id/outTile"
         android:layout_width="80dp"
         android:layout_height="200dp"
-        android:layout_gravity="right|center_vertical|center"
-        android:layout_margin="@dimen/outtile_margin"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/outtile"
         android:onClick="openOutTilePage" />
 
@@ -33,7 +33,6 @@ tools:context=".EditActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="On"
-        android:layout_gravity="bottom"
         android:visibility="gone" />
 
-</android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

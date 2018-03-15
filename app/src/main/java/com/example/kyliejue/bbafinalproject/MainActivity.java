@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.action_discover:
 
                                 break;
-                            case R.id.action_challenges:
+                            case R.id.action_myd:
 
                                 break;
                             case R.id.action_create:
