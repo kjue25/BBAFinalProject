@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/flashlight_background"
+    tools:context="com.example.kyliejue.bbafinalproject.OutputFlashlightActivity">
+
+    <Button
+        android:id="@+id/turnOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turn Flashlight On"
+        app:layout_constraintTop_toBottomOf="@+id/enable"
+        tools:layout_editor_absoluteX="107dp" />
+
+    <Button
+        android:id="@+id/enable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="168dp"
+        android:text="Grant Permissions"
+        app:layout_constraintTop_toBottomOf="@+id/durationTextBox"
+        tools:layout_editor_absoluteX="110dp" />
+
+    <TextView
+        android:id="@+id/secsTextView"
+        android:layout_width="82dp"
+        android:layout_height="36dp"
+        android:text="secs"
+        app:layout_constraintLeft_toRightOf="@+id/durationTextBox"
+        tools:layout_editor_absoluteX="257dp"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <EditText
+        android:id="@+id/durationTextBox"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter duration"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="68dp" />
+</android.support.constraint.ConstraintLayout>
