@@ -2,20 +2,29 @@ package com.example.kyliejue.bbafinalproject;
 
 import android.util.Log;
 
-public class Condition {
-    SensorInput sensor;
+import java.io.Serializable;
+
+public class Condition implements Serializable {
+    //SensorInput sensor; //TODO: Restore when(if) Conditions/SensorInputs are Parcelable
+    private int sensor;
     private String operand;
     private String chosenValue;
 
     public Condition() {
-        sensor = null;
+        sensor = -1;
         operand = "";
         chosenValue = "";
     }
 
+    public Condition(int sense, String op, String chosenVal) {
+        sensor = sense;
+        operand = op;
+        chosenValue = chosenVal;
+    }
+
     // The following methods will be called from the InTile page
-    public void updateSensor() {
-        //TODO
+    public void updateSensor(int newSensor) {
+        sensor = newSensor;
     }
 
     public void updateOperand(String op) {
@@ -26,8 +35,21 @@ public class Condition {
         chosenValue = chosen;
     }
 
-    public boolean evaluate() {
-        double sensorVal = Double.parseDouble(sensor.getCurrOutput());
+    public String getOp() {
+        return operand;
+    }
+
+    public String getChosenValue() {
+        return chosenValue;
+    }
+
+    public int getSensor() {
+        return sensor;
+    }
+
+    // TODO: Restore when(if) Conditions/SensorInputs are Parcelable
+    public boolean evaluate(float sensorVal) {
+//        double sensorVal = Double.parseDouble(sensor.getCurrOutput());
         double chosenVal = Double.parseDouble(chosenValue);
         switch (operand) {
             case "<":

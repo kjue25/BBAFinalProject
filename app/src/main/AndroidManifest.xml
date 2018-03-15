@@ -25,10 +25,7 @@
             android:label="@string/title_activity_edit"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <service
-            android:name=".DominoService"
-            android:enabled="true"
-            android:exported="true"></service>
+        <activity android:name=".InTileActivity"></activity>
     </application>
 
 </manifest>
