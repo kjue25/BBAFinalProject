@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".EditActivity">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/backgroundimage"
+tools:context=".EditActivity">
 
-    <Button xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/in_tile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_in_tile"
-        android:onClick="openInTilePage" />
 
-    <Button xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/out_tile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_out_tile"
-        android:onClick="openOutTilePage"
-        android:layout_gravity="right"/>
+    <ImageButton
+        android:id="@+id/inTile"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:layout_gravity="left|center"
+        android:layout_margin="@dimen/tile_margin"
+        android:background="@drawable/intile"
+        android:onClick="openInTilePage"
+        android:padding="@android:dimen/notification_large_icon_width"
+        android:paddingLeft="@android:dimen/app_icon_size" />
+
+    <ImageButton
+        android:id="@+id/outTile"
+        android:layout_width="80dp"
+        android:layout_height="200dp"
+        android:layout_gravity="right|center_vertical|center"
+        android:layout_margin="@dimen/outtile_margin"
+        android:background="@drawable/outtile"
+        android:onClick="openOutTilePage" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -15,6 +15,7 @@ public class EditActivity extends AppCompatActivity {
 
     private Domino editDomino;
 
+
     // Request codes for OutTile and InTile activities
     // TODO: Move these to a res.values file
     private static final int RECEIVED_INTILE_CODE = 0;
