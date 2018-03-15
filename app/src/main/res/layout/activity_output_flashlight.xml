@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/flashlight_background"
-    tools:context="com.example.kyliejue.bbafinalproject.OutputFlashlightActivity">
+    tools:context=".OutputFlashlightActivity">
 
     <Button
         android:id="@+id/turnOn"

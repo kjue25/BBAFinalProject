@@ -102,6 +102,7 @@ public class EditActivity extends AppCompatActivity {
             intent.putExtra("domino_output", editDomino.getOutput()); // TODO: Make sure this can handle null
         }
         startActivityForResult(intent, OUTTILE_CODE);
+        setContentView(R.layout.activity_out_tile);
     }
 
     public void openInTilePage(View view) {
@@ -111,7 +112,7 @@ public class EditActivity extends AppCompatActivity {
             intent.putExtra("domino_input", editDomino.getInput().get(0));
         }
         startActivityForResult(intent, INTILE_CODE);
-//        setContentView(R.layout.activity_in_tile);
+        setContentView(R.layout.activity_in_tile);
         Log.d("STATE", "WAITING FOR INTILE");
     }
 
