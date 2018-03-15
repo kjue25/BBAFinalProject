@@ -94,6 +94,16 @@ public class EditActivity extends AppCompatActivity {
         super.onStop();
     }
 
+    //Navigates to the OutTile creation page
+    public void openOutTilePage(View view) {
+        // TODO: Replace SensorActivity.class with OutTileActivity.class
+        Intent intent = new Intent(this, OutTileActivity.class);
+        if(editDomino.getOutput() != null){
+            intent.putExtra("domino_output", editDomino.getOutput()); // TODO: Make sure this can handle null
+        }
+        startActivityForResult(intent, OUTTILE_CODE);
+    }
+
     public void openInTilePage(View view) {
         Intent intent = new Intent(this, InTileActivity.class);
         //TODO: Fix the following line to handle ArrayList<Condition>
@@ -101,16 +111,8 @@ public class EditActivity extends AppCompatActivity {
             intent.putExtra("domino_input", editDomino.getInput().get(0));
         }
         startActivityForResult(intent, INTILE_CODE);
-        setContentView(R.layout.activity_in_tile);
+//        setContentView(R.layout.activity_in_tile);
         Log.d("STATE", "WAITING FOR INTILE");
-    }
-
-    //Navigates to the OutTile creation page
-    public void openOutTilePage(View view) {
-        // TODO: Replace SensorActivity.class with OutTileActivity.class
-        Intent intent = new Intent(this, SensorActivity.class);
-        intent.putExtra("domino_output", editDomino.getOutput()); // TODO: Make sure this can handle null
-        startActivityForResult(intent, OUTTILE_CODE);
     }
 
     @Override
@@ -172,4 +174,3 @@ public class EditActivity extends AppCompatActivity {
     }
 
 }
-
