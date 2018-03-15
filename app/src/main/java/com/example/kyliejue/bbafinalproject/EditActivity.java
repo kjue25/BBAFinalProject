@@ -1,10 +1,7 @@
 package com.example.kyliejue.bbafinalproject;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -12,7 +9,6 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -24,10 +20,8 @@ public class EditActivity extends AppCompatActivity {
 
     // Request codes for OutTile and InTile activities
     // TODO: Move these to a res.values file
-    private static final int RECEIVED_INTILE_CODE = 0;
-    private static final int RECEIVED_OUTTILE_CODE = 1;
-    private static final int EDIT_INTILE_CODE = 2;
-    private static final int EDIT_OUTTILE_CODE = 3;
+    private static final int INTILE_CODE = 0;
+    private static final int OUTTILE_CODE = 1;
 
     private class RawSensorListener implements SensorEventListener {
 
@@ -39,6 +33,7 @@ public class EditActivity extends AppCompatActivity {
             sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
             sensor = sensorManager.getDefaultSensor(sensorType);
             currValue = 0;
+            editDomino = new Domino();
         }
 
         @Override
@@ -100,8 +95,8 @@ public class EditActivity extends AppCompatActivity {
     public void openInTilePage(View view) {
         Intent intent = new Intent(this, InTileActivity.class);
         //TODO: Fix the following line to handle ArrayList<Condition>
-        intent.putExtra("domino_input", editDomino.getInput().get(0));
-        startActivityForResult(intent, EDIT_INTILE_CODE);
+        //intent.putExtra("domino_input", editDomino.getInput().get(0));
+        startActivityForResult(intent, INTILE_CODE);
         setContentView(R.layout.activity_in_tile);
     }
 
@@ -110,17 +105,17 @@ public class EditActivity extends AppCompatActivity {
         // TODO: Replace SensorActivity.class with OutTileActivity.class
         Intent intent = new Intent(this, SensorActivity.class);
         intent.putExtra("domino_output", editDomino.getOutput());
-        startActivityForResult(intent, EDIT_OUTTILE_CODE);
+        startActivityForResult(intent, OUTTILE_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RECEIVED_INTILE_CODE) {
+        if (requestCode == INTILE_CODE) {
             // TODO: Get index from data as well
             Condition condition = (Condition) data.getSerializableExtra("update_input");
             editDomino.setInput(0, condition);
-        } else if (requestCode == RECEIVED_OUTTILE_CODE) {
+        } else if (requestCode == OUTTILE_CODE) {
             // Get output object from data.getExtras();
             Output output = (Output) data.getSerializableExtra("update_output");
             editDomino.setOutput(output);
@@ -163,7 +158,7 @@ public class EditActivity extends AppCompatActivity {
                 }
                 index++;
             }
-            editDomino.triggerOutput();
+            editDomino.triggerOutput(getApplicationContext());
             editDomino.toggle();
         }
     }

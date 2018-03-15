@@ -1,5 +1,7 @@
 package com.example.kyliejue.bbafinalproject;
 
+import android.content.Context;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -50,8 +52,8 @@ public class Domino implements Serializable {
         return condition.evaluate(sensorVal);
     }
 
-    public void triggerOutput() {
-        output.onTrigger();
+    public void triggerOutput(Context appContext) {
+        output.onTrigger(appContext);
         isOn = !isOn;
     }
 
