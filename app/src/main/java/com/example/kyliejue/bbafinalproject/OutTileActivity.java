@@ -8,6 +8,8 @@ import android.view.View;
 
 public class OutTileActivity extends AppCompatActivity {
 
+    private static final int FLASHLIGHT_CODE = 4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +18,12 @@ public class OutTileActivity extends AppCompatActivity {
 
     public void onFlashlight(View view){
         Intent flashlightIntent = new Intent(this, OutputFlashlightActivity.class);
-        startActivityForResult(flashlightIntent, 1);
+        if (flashlightIntent.getSerializableExtra("domino_output") != null) {
+            Output output = (Output) flashlightIntent.getSerializableExtra("domino_output");
+            flashlightIntent.putExtra("domino_output", flashlightIntent);
+        }
+        startActivityForResult(flashlightIntent, FLASHLIGHT_CODE);
+        Log.d("STATE", "WAITING FOR FLASHLIGHT");
     }
 
     public void onSound(View view){
@@ -27,18 +34,23 @@ public class OutTileActivity extends AppCompatActivity {
     //when I receive object from the specific outTileActivity pages...
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Intent requestIntent = getIntent();
-        Output outputObjectFromDomino = (Output) requestIntent.getSerializableExtra("domino_output");
-        Log.d("STATE", "does it ever get here?");
-        if(resultCode != RESULT_CANCELED) {
-            Log.d("STATE", "section for result code = 1");
-            Output outputObject = (Output) data.getSerializableExtra("outputObject");
-            Log.d("STATE", "hello just checking if this onActivityResult runs");
-            Log.d("STATE", outputObject.toString());
-            outputObjectFromDomino = outputObject;
-            Log.d("STATE", outputObjectFromDomino.toString());
+        super.onActivityResult(requestCode, resultCode, data);
 
-//                outputObjectFromDomino.onTrigger();
+        // Intent from EditActivity
+        Intent requestIntent = getIntent();
+        Output outputObject = (Output) requestIntent.getSerializableExtra("domino_output");
+
+        // Intent to return to EditActivity
+        Intent intent = new Intent();
+        if (requestCode == FLASHLIGHT_CODE) {
+            Log.d("STATE", "Received Flashlight output");
+            outputObject = (Output) data.getSerializableExtra("update_output");
+            Log.d("STATE", "Created Output with duration: " + ((OutputFlashlight) outputObject).getDuration());
         }
+
+        intent.putExtra("update_input", outputObject);
+        setResult(RESULT_OK, intent);
+        finish();
+        Log.d("STATE", "TESTING OUTTILE");
     }
 }

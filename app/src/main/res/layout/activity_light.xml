@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LightActivity">
+
+    <TextView
+        android:id="@+id/brightness_param"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Brightness"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="125dp" />
+
+    <Spinner xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/operand_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/brightness_param"
+        app:layout_constraintLeft_toRightOf="@id/brightness_param" />
+
+    <EditText xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/luxTextBox"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="132dp"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:text="Enter brightness in lux"
+        app:layout_constraintBottom_toBottomOf="@id/operand_spinner"
+        app:layout_constraintLeft_toRightOf="@id/operand_spinner" />
+
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lightButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="setLightSensor"
+        android:text="DONE"
+        app:layout_constraintTop_toBottomOf="@id/operand_spinner"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="240dp" />
+
+</android.support.constraint.ConstraintLayout>

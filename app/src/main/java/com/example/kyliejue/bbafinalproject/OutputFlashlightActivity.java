@@ -53,17 +53,14 @@ public class OutputFlashlightActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int duration = Integer.parseInt(editText.getText().toString())*1000;
-                CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
 
-                //create outputFlashlight object
+                // Create outputFlashlight object
                 Output outputFlashlight = new OutputFlashlight(duration, hasCameraFlash);
                 Intent outputIntent = new Intent();
-                outputIntent.putExtra("outputObject", outputFlashlight);
-                setResult(1, outputIntent);
-
-
+                outputIntent.putExtra("update_output", outputFlashlight);
+                setResult(RESULT_OK, outputIntent);
                 Log.d("STATE", "now sending the flashlight object to outtile activity");
-                outputFlashlight.onTrigger(getApplicationContext());
+//                outputFlashlight.onTrigger(getApplicationContext());
 
                 finish();
             }
@@ -72,6 +69,7 @@ public class OutputFlashlightActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.d("STATE", "onRequestPermissionsResult");
         switch(requestCode) {
             case CAMERA_REQUEST :
                 if (grantResults.length > 0  &&  grantResults[0] == PackageManager.PERMISSION_GRANTED) {

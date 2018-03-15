@@ -31,8 +31,10 @@
         <activity android:name=".OutTileActivity" />
         <activity android:name=".OutputFlashlightActivity" />
         <activity android:name=".OutputCameraActivity" />
-        <activity android:name=".OutputSoundActivity"></activity>
-        <activity android:name=".InTileActivity"></activity>
+        <activity android:name=".OutputSoundActivity" />
+        <activity android:name=".InTileActivity" />
+        <activity android:name=".LightActivity" />
+        <activity android:name=".MagnetometerActivity"></activity>
     </application>
 
 </manifest>
