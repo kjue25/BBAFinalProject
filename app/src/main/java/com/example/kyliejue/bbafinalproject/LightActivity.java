@@ -28,6 +28,7 @@ public class LightActivity extends AppCompatActivity implements AdapterView.OnIt
                 R.array.operand_spinner, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         addKeyListener();
     }
@@ -37,8 +38,6 @@ public class LightActivity extends AppCompatActivity implements AdapterView.OnIt
         // parent.getItemAtPosition(pos)
         operand = parent.getItemAtPosition(pos).toString();
         Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
-        Spinner spinner = findViewById(R.id.operand_spinner);
-        spinner.setOnItemSelectedListener(this);
     }
 
     @Override
