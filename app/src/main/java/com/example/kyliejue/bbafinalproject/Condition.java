@@ -56,6 +56,7 @@ public class Condition implements Serializable {
                 if (sensorVal < chosenVal) return true;
                 return false;
             case ">":
+                Log.d("STATE", "EVALUATE: " + sensorVal + " > " + chosenVal);
                 if (sensorVal > chosenVal) return true;
                 return false;
             case "=":
