@@ -54,7 +54,7 @@ public class OutTileActivity extends AppCompatActivity {
             Log.d("STATE", "Created flashlight with duration: " + ((OutputFlashlight) outputObject).getDuration());
         }
         if (requestCode == SOUND_CODE) {
-            Log.d("STATE", "Received Sound output");
+            Log.d("STATE", "Received Sound output");apa
             outputObject = (Output) data.getSerializableExtra("update_output");
             Log.d("STATE", "Created sound output");
         }
